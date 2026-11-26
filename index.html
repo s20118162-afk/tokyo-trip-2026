@@ -39,52 +39,103 @@ label.ck{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-botto
 label.ck input{margin-top:5px;accent-color:var(--ac)}
 label.ck input:checked+span{text-decoration:line-through;color:var(--mu)}
 footer{color:var(--mu);font-size:.8rem;text-align:center;margin-top:30px}
+body{transition:background .6s,color .6s;background-attachment:fixed}
+.wrap{position:relative;z-index:1}
+#fx{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+#fx span{position:absolute}
+#fx .lf{top:-10%;opacity:.75;animation:fall linear infinite}
+@keyframes fall{to{transform:translateY(115vh) rotate(360deg)}}
+#fx .tw{animation:tw 3s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.15;transform:scale(.7)}50%{opacity:1;transform:scale(1.25)}}
+@media(prefers-reduced-motion:reduce){#fx{display:none}}
+body:not(.disney){background:linear-gradient(180deg,var(--bg),var(--ac2) 140%)}
+body.disney{--bg:#e8f5ff;--card:#fff;--tx:#2b2457;--mu:#6b6598;--ac:#ec4899;--ac2:#ffe1f0;--bd:#f7cfe4;background:linear-gradient(180deg,#aee0ff,#ffe3f3 50%,#fff3b8)}
+body.disney .card,body.disney .tl li .d{color:var(--tx)}
+body.d1{--bg:#e6f3ff;--card:#fff;--tx:#1f2d3d;--mu:#5d7186;--ac:#1c7ed6;--ac2:#d3e9fb;--bd:#c5ddf2;background:linear-gradient(180deg,#a9d8ff,#f4faff 55%,#ffe3d0)}
+body.d4{--bg:#fff3e0;--card:#fffaf2;--tx:#3b2a1a;--mu:#8a6d4f;--ac:#d9792b;--ac2:#fbe0bd;--bd:#f0d3a8;background:linear-gradient(180deg,#ffd29a,#fff3e0 50%,#ffc4a3)}
+#fx .fly{left:-12%;opacity:.85;animation:fly linear infinite}
+@keyframes fly{to{transform:translateX(125vw)}}
+body.go{--bg:#eceefb;--card:#fff;--tx:#23264a;--mu:#666b96;--ac:#4f5bd5;--ac2:#dcdffa;--bd:#ccd0f2;background:linear-gradient(180deg,#d3d8fb,#f5f6fe 55%,#e4f4ee)}
+body.tips{--bg:#e8f6f1;--card:#fff;--tx:#1d3a33;--mu:#5b7f75;--ac:#1f9d7a;--ac2:#d2efe5;--bd:#bfe3d6;background:linear-gradient(180deg,#c9ecdf,#f2fbf7 55%,#fff4d6)}
 </style>
 </head>
 <body>
+<div id="fx" aria-hidden="true"></div>
 <div class="wrap">
 <header>
-<small>TOKYO · 2026.11.27 – 11.30</small>
+<small>🍁 TOKYO · 2026.11.27 – 11.30 🍁</small>
 <h1>東京四天三夜自由行手冊</h1>
-<p>4 Days 3 Nights ・ 晚秋初冬 6°C – 15°C ・ 住東京灣東方飯店</p>
+<p id="wx" data-d="4 Days 3 Nights ・ 晚秋初冬 6°C – 15°C ・ 住東京灣東方飯店">4 Days 3 Nights ・ 晚秋初冬 6°C – 15°C ・ 住東京灣東方飯店</p>
 </header>
 
-<div class="grid">
-<div class="card"><h3>✈ 去程 11/27（五）</h3><p>桃園 TPE 10:40 ➔ 成田 NRT 14:55</p></div>
-<div class="card"><h3>✈ 回程 11/30（一）</h3><p>成田 NRT 12:10 ➔ 桃園 TPE 15:15</p><p style="color:var(--mu)">建議 10:00 前抵達機場</p></div>
-<div class="card"><h3>🏨 東京灣東方飯店</h3><p>千葉縣浦安市美濱 1-8-2，JR 新浦安站空橋直通步行 1 分鐘。</p>
-<ul><li>迪士尼好夥伴飯店：免費接駁巴士直達雙樂園（約 15 分鐘，免預約）</li><li>利木津巴士直達成田（60–75 分鐘，回程需預約）</li><li>樓下 AEON、MONA、Lawson、藥妝、麥當勞</li><li>大廳免費迎賓點心飲料、泡澡鹽；房內有足部按摩機</li></ul></div>
-</div>
-
 <nav id="nav">
-<a href="#d1">Day 1</a><a href="#d2">Day 2</a><a href="#d3">Day 3</a><a href="#d4">Day 4</a><a href="#tips">貼士</a>
+<a href="#d1">Day 1</a><a href="#d2">Day 2</a><a href="#d3">Day 3</a><a href="#d4">Day 4</a><a href="#go">交通</a><a href="#tips">貼士</a>
 </nav>
 
 <section class="sec" id="d1">
-<h2>Day 1 · 11/27（五）抵達東京</h2><p class="sub">新浦安周邊採買</p>
+<h2>✈️ Day 1 · 11/27（五）搭機抵達東京 🗾</h2><p class="sub">燒肉晚餐 ＆ 採買</p>
+<div class="grid">
+<div class="card"><h3>✈️ 去程 11/27（五）</h3><p>桃園 TPE 10:40 ➔ 成田 NRT 14:55</p><p><b>樂桃航空 Peach MM626</b> ・ 桃園第一航廈 ➔ 成田第一航廈</p><p>座位：<b>7B、7C</b></p></div>
+<div class="card"><h3>🏨 東京灣東方飯店</h3><p>千葉縣浦安市美濱 1-8-2，JR 新浦安站空橋直通步行 1 分鐘。</p><ul><li>樓下 AEON、MONA、Lawson、藥妝、麥當勞</li><li>大廳免費迎賓點心飲料、泡澡鹽；房內有足部按摩機</li></ul></div>
+<div class="card" style="grid-column:1/-1"><h3>📝 入境與交通備註</h3>
+<p><b>Visit Japan Web</b>：最晚 <b>11/27 08:55 前</b>填好（入境前至少 6 小時），建議先填並截圖 QR Code。<a href="https://www.vjw.digital.go.jp/main/#/vjwplo001" target="_blank" rel="noopener" style="color:var(--ac)">官網</a></p>
+<p style="margin-top:10px"><b>成田第一航廈 ➔ 利木津巴士</b>（全程在 1 樓，不用下地下室）</p>
+<ol style="padding-left:1.3em;margin:4px 0"><li>入境審查 ➔ 領行李 ➔ 海關，走進 1 樓抵達大廳</li><li>出大廳正面是巴士售票處，一邊京成巴士、一邊<b>利木津巴士</b></li><li>到利木津櫃台說要去「新浦安站／東京灣東方飯店」，櫃台會告知下一班時間與票價</li><li>第一航廈分南翼、北翼，兩邊都有售票處；利木津櫃台營業 06:30–23:00</li><li>買完票走出大廳就是乘車口，上車前確認班次與目的地</li></ol>
+<details style="margin-top:10px"><summary style="cursor:pointer;font-weight:700;color:var(--ac)">Plan B：搭 N'EX 成田特快到新浦安（點開看怎麼搭）</summary>
+<p style="margin:6px 0">利木津客滿或趕不上時用。全程約 80 分鐘，N'EX 約 53 分鐘 + 京葉線約 17 分鐘。</p>
+<ol style="padding-left:1.3em;margin:4px 0"><li>入境後到第一航廈<b>地下 1 樓</b>的 JR 成田機場站（售票處和驗票閘門都在這層）</li><li>到 <b>JR 東日本旅行服務中心</b>窗口或 JR 售票機買票（窗口約 8:30–19:00，較晚抵達就用售票機，以現場為準）</li><li>買「成田特快 N'EX」的特急券：全車指定席，買票時就會劃位，可能需出示護照。單程到東京站約 ¥3,070；也可請窗口開到「新浦安」的連續車票，詳細費用以現場為準</li><li>下一層（地下 2 樓）月台上車，認清「往東京」的班次，坐到<b>東京站</b>（約 53 分鐘）</li><li>在東京站轉 <b>JR 京葉線</b>：月台在深層地下，要走一段路，跟著「京葉線」指標走</li><li>搭京葉線到<b>新浦安站</b>（約 17 分鐘），空橋步行約 1 分鐘到飯店</li></ol></details>
+<p style="margin-top:10px"><b>新浦安站 ➔ 飯店</b>：步行約 1 分鐘。</p></div>
+</div>
 <ul class="tl">
-<li><span class="t">10:40–14:55</span><b>桃園 ➔ 成田機場</b></li>
+<li><span class="t">10:40–14:55</span><b>桃園 ➔ 成田機場（樂桃航空 MM626）</b><span class="d">第一航廈 ・ 座位 7B、7C</span></li>
 <li><span class="t">15:00–16:00</span><b>入境通關、領行李</b><span class="d">事先完成 Visit Japan Web QR Code，並購買利木津巴士車票。</span></li>
 <li><span class="t">16:15–17:30</span><b>利木津巴士直達新浦安站／飯店</b><span class="d">約 60–75 分鐘，車資約 ¥2,900。<br><span class="tag">備案</span>N'EX 成田特快至東京站 ➔ 轉 JR 京葉線至新浦安站（約 80 分鐘）。</span></li>
 <li><span class="t">17:30–18:15</span><b>Check-in</b><span class="d">請櫃檯預約 11/30 回程利木津座位，領取大廳迎賓點心。</span></li>
-<li><span class="t">18:30–21:00</span><b>AEON / MONA 晚餐與採買</b><span class="d">拉麵、日式定食、迴轉壽司；超市買隔日早餐、水與零食。</span></li>
+<li><span class="t">18:30–21:00</span><b>燒肉：炭火燒肉 新羅</b><span class="d">位在 ラフィネス新浦安ベイモールA，離新浦安站約 1.6 公里（步行約 20 分鐘，或搭 11 號公車約 5 分鐘）；店家有提供接送服務，請先詢問。11/27（五）營業至 24:00（最後點餐 23:30）。90 分鐘飲放套餐 ¥6,380～9,680，套餐標示 3 人以上，2 人可改點單品。用完餐若時間還夠，順路到 AEON 超市採買隔日早餐，太晚就改明天。<br><a href="https://tabelog.com/tw/chiba/A1202/A120203/12021516/" style="color:var(--ac)" target="_blank" rel="noopener">預約／店家頁面（Tabelog）</a></span></li>
 </ul></section>
 
 <section class="sec" id="d2">
-<h2>Day 2 · 11/28（六）淺草 ➔ 銀座 ➔ 日比谷 ➔ 丸之內</h2><p class="sub">全程使用 Suica / PASMO，由北向南單向推進，零回頭路。</p>
+<h2>🍁 Day 2 · 11/28（六）淺草 ➔ 晴空塔 ➔ 日比谷 ➔ 銀座 ➔ 丸之內</h2><p class="sub">全程使用 Suica / PASMO 西瓜卡。</p>
+<div class="grid"><div class="card"><h3>📝 今日備註</h3><ul>
+<li>全程使用 Suica / PASMO</li>
+<li>和服 10:00 報到，<b>13:30 準時歸還</b>（ookini 淺草雷門店，營業 08:30–18:00）</li>
+<li>穿和服內搭大領口（V/U 領）發熱衣＋保暖內搭褲，避免領口外露</li>
+<li>仲見世通禁止邊走邊吃</li>
+<li>晴空塔這次只在塔下看外觀；之後想上塔，展望台 10:00–21:00（最晚入場 20:00）</li>
+<li>11 月底是銀杏與楓葉季（預測東京銀杏約 11/26、楓葉約 11/29 最美）</li>
+<li>日落後體感僅 6–8°C，備好保暖外套</li></ul></div>
+<div class="card"><h3>🍽️ 晚餐：大衆すき焼き北斗 銀座コリドー店</h3><ul>
+<li>A4～A5 黑毛和牛壽喜燒，價格平實；也有鹽味鐵板燒</li>
+<li>11/28（六）營業 11:30–22:00（最後點餐 21:30），晚餐均價約 ¥5,000</li>
+<li>銀座站 C1 出口步行約 4 分鐘；日比谷站 A2 出口步行約 6 分鐘</li>
+<li>只接受網路預約，建議訂 18:30 左右；店電話 03-6274-6220</li>
+<li>預約：<a href="https://hokuto-ginnza.foodre.jp/" style="color:var(--ac)" target="_blank" rel="noopener">官網預約</a></li>
+<li>有英文菜單；17:00–22:00 可加購 120 分鐘飲放 ¥1,980/人</li></ul></div></div>
 <ul class="tl">
 <li><span class="t">08:50–09:50</span><b>飯店出發前往淺草</b><span class="d">約 45–55 分鐘，約 ¥490。JR 新浦安站（京葉線）➔ 八丁堀（轉日比谷線）➔ 上野（轉銀座線）➔ 淺草站 1 或 2 號出口。</span></li>
 <li><span class="t">10:00–13:30</span><b>ookini 和服租借（淺草雷門店）</b><span class="d">淺草 1-16-11 2F–3F，營業 08:30–18:00，距 1 號出口步行約 3 分鐘。10:00 報到挑和服、盤髮（45–60 分鐘）➔ 雷門、仲見世通（禁止邊走邊吃）、淺草寺、五重塔拍照 ➔ <b style="display:inline">13:30 準時歸還</b>。</span></li>
 <li><span class="t">13:30–14:30</span><b>淺草午餐</b><span class="d">還完和服再吃最舒服：天丼、炸牛排、壽喜燒、文字燒。</span></li>
-<li><span class="t">14:30–15:00</span><b>銀座線一車直達銀座站</b><span class="d">約 16 分鐘。</span></li>
-<li><span class="t">15:00–17:30</span><b>銀座逛街 ＆ 中村藤吉本店</b><span class="d"><span class="tag">第一站</span>先到 GINZA SIX 4F 抽候位號碼牌（營業 10:30–20:30，Café 最後點餐 19:30；必點別製抹茶芭菲、生茶凍）。<br><span class="tag">週六限定</span>中央通 12:00–17:00 步行者天國。候位時逛 GINZA SIX（頂樓免費空中花園）、銀座和光鐘樓、Uniqlo 銀座旗艦店（12 層）、Loft 銀座。</span></li>
-<li><span class="t">17:30–18:15</span><b>日比谷公園賞楓 ＆ Tokyo Midtown Hibiya 點燈</b><span class="d">銀座步行 5–8 分鐘；11 月底是銀杏大道與心字池楓葉最佳期。</span></li>
-<li><span class="t">18:15–20:00</span><b>丸之內仲通聖誕點燈 ＆ 東京車站夜景</b><span class="d">沿香檳金 LED 燈海走到東京車站 ➔ KITTE 6 樓免費屋頂花園拍紅磚車站 ➔ 車站一番街晚餐與伴手禮。</span></li>
-<li><span class="t">20:00–20:30</span><b>JR 京葉線回新浦安站</b><span class="d">約 17 分鐘直達。</span></li>
-</ul></section>
+<li><span class="t">14:30–15:15</span><b>淺草 ➔ 晴空塔（只看外觀）</b><span class="d">步行約 20 分鐘，在塔下拍照、逛 Solamachi 晴空街道。這次不上展望台。</span></li>
+<li><span class="t">15:15–16:00</span><b>晴空塔 ➔ 日比谷公園</b><span class="d">搭地鐵約 40–50 分鐘，請以 Google Maps 確認最順的路線。</span></li>
+<li><span class="t">16:00–16:50</span><b>日比谷公園賞楓</b><span class="d">銀杏大道與心字池楓葉。日落約 16:30，金色光線下最好拍；預測東京楓葉約 11/29 最美，11/28 接近最佳期。</span></li>
+<li><span class="t">17:00–18:15</span><b>銀座散步 ＆ 逛街</b><span class="d">日比谷步行 5–8 分鐘。GINZA SIX（頂樓免費空中花園）、銀座和光鐘樓、Uniqlo 銀座旗艦店（12 層）、Loft 銀座。週六中央通的步行者天國 17:00 已結束。<br><span class="tag">順路</span>BicCamera 有楽町店（有楽町站日比谷口步行 1 分鐘，4F 有玩具，可免稅，營業約 10:00–21:00，請以官網為準）。朋友想買的麵包超人商品，建議先打 03-5221-1111 確認有沒有庫存。</span></li>
+<li><span class="t">18:30–20:00</span><b>晚餐：大衆すき焼き北斗 銀座コリドー店</b><span class="d">壽喜燒，銀座站 C1 出口步行約 4 分鐘。建議先網路預約 18:30。</span></li>
+<li><span class="t">20:00–21:15</span><b>丸之內仲通聖誕點燈 ＆ 東京車站夜景</b><span class="d">從銀座／有樂町方向走到丸之內，沿香檳金 LED 燈海走到東京車站 ➔ KITTE 6 樓免費屋頂花園拍紅磚車站 ➔ 車站一番街買伴手禮。</span></li>
+<li><span class="t">21:15–21:45</span><b>JR 京葉線回新浦安站</b><span class="d">約 17 分鐘直達；京葉線月台較遠，預留走路時間。</span></li>
+</ul>
+<div class="card" style="margin-top:6px"><h3>📌 待定／備選（尚未排入行程）</h3><p><b>中村藤吉本店 銀座店</b>（GINZA SIX 4F）</p><ul><li>地址：東京都中央區銀座 6-10-1 GINZA SIX 4F</li><li>營業 10:30–20:30，Café 最後點餐 19:30</li><li>招牌：別製抹茶芭菲、生茶凍</li><li>若要排入，建議到銀座第一站先抽候位號碼牌</li></ul></div></section>
 
 <section class="sec" id="d3">
-<h2>Day 3 · 11/29（日）東京迪士尼樂園</h2><p class="sub">表定 09:00–21:00（常於 08:15–08:30 提早開放入園）；煙火 20:30，視風速而定。</p>
+<h2>🏰 Day 3 · 11/29（日）東京迪士尼樂園 ✨</h2><p class="sub">表定 09:00–21:00（常於 08:15–08:30 提早開放入園）；煙火 20:30，視風速而定。</p>
+<div class="grid"><div class="card"><h3>📝 今日備註</h3><ul>
+<li>出發前先註冊 Tokyo Disney Resort App 並綁定信用卡</li>
+<li>園區表定 09:00–21:00，常於 08:15–08:30 提早開放入園</li>
+<li>付費 DPA《美女與野獸「城堡奇緣」》¥2,000/人</li>
+<li>午餐用 App 行動點餐免排隊</li>
+<li>煙火 20:30 施放，視當日風速而定</li>
+<li>16:30 日落後氣溫驟降、海邊夜風大，備防風外套與圍巾</li>
+<li>21:00–21:30 在「好夥伴飯店巴士乘車區」搭免費接駁車回飯店</li>
+<li>晚餐彦酉最後點餐 22:00，請提前電話預約確認</li></ul></div></div>
 <ul class="tl">
 <li><span class="t">07:15–07:45</span><b>搭飯店免費接駁巴士</b><span class="d">提早 10 分鐘排隊，車程約 15 分鐘。</span></li>
 <li><span class="t">08:15–08:30</span><b>入園安檢 ＆ 黃金 3 分鐘 App 操作</b><span class="d">
@@ -96,25 +147,62 @@ footer{color:var(--mu);font-size:.8rem;text-align:center;margin-top:30px}
 <li><span class="t">13:30–18:30</span><b>依序體驗優先卡設施、卡通城拍照、世界市集買周邊</b><span class="d">16:30 日落後氣溫驟降，備好防風外套與圍巾。</span></li>
 <li><span class="t">19:15–20:45</span><b>夢之光電子大遊行 ➔ 20:30 城堡煙火秀</b></li>
 <li><span class="t">21:00–21:30</span><b>好夥伴飯店巴士乘車區搭免費接駁車返回飯店</b></li>
+<li><span class="t">21:45–23:00</span><b>晚餐：彦酉（イオン新浦安 4F）</b><span class="d">焼鳥與居酒屋料理，招牌會津馬刺、信州上田美味だれ焼鳥；晚餐均價約 ¥4,000。11/29（日）營業 11:30–23:00，<b>最後點餐 22:00</b>，接駁車回到飯店後時間很緊，請先電話確認。<br>電話 047-711-0522（該店表示 AI 自動預約服務不算數）｜<a href="https://hikodori.owst.jp/" style="color:var(--ac)" target="_blank" rel="noopener">官網預約</a></span></li>
 </ul></section>
 
 <section class="sec" id="d4">
-<h2>Day 4 · 11/30（一）退房 ➔ 返台</h2><p class="sub">記得前一晚確認利木津巴士預約。</p>
+<h2>🛍️ Day 4 · 11/30（一）退房 ➔ 滿載而歸 ✈️</h2><p class="sub">記得前一晚確認利木津巴士預約，帶著滿滿的回憶與戰利品回家 🎁</p>
+<div class="grid"><div class="card"><h3>✈️ 回程 11/30（一）</h3><p>成田 NRT 12:10 ➔ 桃園 TPE 15:15</p><p><b>酷航 Scoot TR867</b>（B787-9）・ 成田第一航廈 ➔ 桃園第一航廈</p><p>座位：<b>19E、19F</b></p><p style="color:var(--mu)">建議 10:00 前抵達機場</p></div></div>
 <ul class="tl">
 <li><span class="t">07:30–08:15</span><b>飯店早餐、整理行李、退房</b></li>
 <li><span class="t">08:30–09:45</span><b>搭已預約的利木津巴士前往成田</b><span class="d">約 60–75 分鐘。</span></li>
 <li><span class="t">10:00–11:40</span><b>報到、托運、免稅店採買</b><span class="d">東京芭娜娜、NY 起司奶油脆餅、Royce 生巧克力。</span></li>
-<li><span class="t">12:10–15:15</span><b>成田 NRT ➔ 桃園 TPE</b></li>
+<li><span class="t">12:10–15:15</span><b>成田 NRT ➔ 桃園 TPE（酷航 TR867）</b><span class="d">B787-9 ・ 第一航廈 ・ 座位 19E、19F</span></li>
 </ul></section>
 
+<section class="sec" id="go">
+<h2>🚆 交通資訊總整理 🚌</h2><p class="sub">全程使用 Suica / PASMO 西瓜卡（也可用 Apple Pay / Google Pay）。</p>
+<div class="grid">
+<div class="card"><h3>✈ 航班與座位</h3><ul>
+<li><b>去程 樂桃航空 MM626</b>：桃園第一航廈 ➔ 成田第一航廈，座位 7B、7C</li>
+<li><b>回程 酷航 TR867</b>：B787-9，成田第一航廈 ➔ 桃園第一航廈，座位 19E、19F</li></ul></div>
+<div class="card"><h3>🚌 成田 ➔ 飯店（Day 1）</h3><ul>
+<li><b>利木津巴士</b>：直達新浦安站／東京灣東方飯店，約 60–75 分鐘，車資約 ¥2,900</li>
+<li><b>備案電車</b>：N'EX 成田特快至東京站 ➔ 轉 JR 京葉線至新浦安站，約 80 分鐘</li>
+<li>Check-in 時請櫃檯預約 11/30 回程利木津座位</li></ul></div>
+<div class="card"><h3>🚃 飯店 ➔ 淺草（Day 2）</h3><ul>
+<li>約 45–55 分鐘，車資約 ¥490</li>
+<li>JR 新浦安站（京葉線）➔ 八丁堀（轉東京 Metro 日比谷線）➔ 上野（轉銀座線）➔ 淺草站 1 或 2 號出口</li></ul></div>
+<div class="card"><h3>🚇 市區移動（Day 2）</h3><ul>
+<li>淺草 ➔ 晴空塔：步行約 20 分鐘（或搭地鐵，請以 Google Maps 確認）</li>
+<li>晴空塔 ➔ 日比谷公園：搭地鐵約 40–50 分鐘（請以 Google Maps 確認）</li>
+<li>銀座 ➔ 日比谷公園：步行 5–8 分鐘</li>
+<li>丸之內仲通 ➔ 東京車站：沿燈海步行</li>
+<li>東京車站 ➔ 新浦安站：JR 京葉線，約 17 分鐘直達</li></ul></div>
+<div class="card"><h3>🏰 飯店 ⇄ 迪士尼（Day 3）</h3><ul>
+<li>飯店免費接駁巴士，約 15 分鐘，免預約</li>
+<li>去程 07:15–07:45 提早 10 分鐘排隊</li>
+<li>回程 21:00–21:30 在「好夥伴飯店巴士乘車區」搭乘</li></ul></div>
+<div class="card"><h3>🛫 飯店 ➔ 成田（Day 4）</h3><ul>
+<li>08:30 搭已預約的利木津巴士，約 60–75 分鐘</li>
+<li>10:00 前抵達機場報到</li></ul></div>
+</div></section>
+
 <section class="sec" id="tips">
-<h2>行前檢查與貼士</h2><p class="sub">勾選狀態會記在這支手機／瀏覽器上。</p>
+<h2>🧳 行前檢查與貼士 ✅</h2><p class="sub">勾選狀態會記在這支手機／瀏覽器上。</p>
 <div class="card"><h3>必備 App</h3>
 <label class="ck"><input type="checkbox" data-k="a1"><span>Tokyo Disney Resort App（先註冊並綁定信用卡）</span></label>
 <label class="ck"><input type="checkbox" data-k="a2"><span>Suica / Apple Pay / Google Pay 儲值</span></label>
 <label class="ck"><input type="checkbox" data-k="a3"><span>Google Maps（轉乘月台與出口）</span></label>
 <label class="ck"><input type="checkbox" data-k="a4"><span>Visit Japan Web 入境與海關 QR Code</span></label>
 </div>
+<div class="card" style="margin-top:12px"><h3>🛍️ 建議購買</h3><ul>
+<li><b>東京芭娜娜</b>（機場免稅店）</li>
+<li><b>NewYork Perfect Cheese 起司奶油脆餅</b>（機場免稅店；東京車站南通路也有，Day 2 回程可順買）</li>
+<li><b>Royce 生巧克力</b>（機場免稅店）</li>
+<li><b>迪士尼周邊</b>：Day 3 世界市集</li>
+<li><b>日本零食、藥妝</b>：飯店樓下 AEON、藥妝店（Day 1 晚上逛）</li></ul>
+<p style="color:var(--mu);margin-top:6px">Day 4 在成田免稅店補買，記得預留時間並留意行李重量。</p></div>
 <div class="grid">
 <div class="card"><h3>💳 非持卡人刷卡</h3><ul>
 <li><b>機票</b>：傳統航空官網購票，持卡人需於起飛前攜實體卡與證件到櫃檯驗證（旅行社／訂票平台或廉航多可免）。</li>
@@ -129,13 +217,61 @@ footer{color:var(--mu);font-size:.8rem;text-align:center;margin-top:30px}
 </div>
 <script>
 (function(){
-var ids=["d1","d2","d3","d4","tips"];
-function show(){
-  var h=(location.hash||"").slice(1);
+var ids=["d1","d2","d3","d4","go","tips"];
+function show(x){
+  var h=typeof x==="string"?x:(location.hash||"").slice(1);
   if(ids.indexOf(h)<0)h="d1";
   ids.forEach(function(i){document.getElementById(i).classList.toggle("on",i===h)});
+  setTheme(h);setWx(h);
   document.querySelectorAll("#nav a").forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+h)});
 }
+var WX={d1:"✈️ 11/27（五）氣溫約 6–15°C｜傍晚抵達，備薄外套（預報尚未公布）",d2:"🍁 11/28（六）氣溫約 6–15°C｜日落後體感 6–8°C（預報尚未公布）",d3:"🏰 11/29（日）氣溫約 6–15°C｜海邊夜風大，備防風外套圍巾（預報尚未公布）",d4:"🛍️ 11/30（一）氣溫約 6–15°C｜早晚偏冷（預報尚未公布）"};
+function setWx(h){var e=document.getElementById("wx");if(e)e.textContent=WX[h]||e.getAttribute("data-d")}
+var fx=document.getElementById("fx"),cur=null;
+function setFx(d){
+  if(cur===d)return;cur=d;
+  document.body.classList.toggle("disney",d);
+  fx.innerHTML="";
+  var s=d?["✨","⭐","🎈","🎉","💖","🎠"]:["🍁","🍂","🍁"];
+  for(var i=0;i<18;i++){
+    var e=document.createElement("span");
+    e.textContent=s[i%s.length];
+    e.className=d?"tw":"lf";
+    e.style.left=Math.random()*100+"%";
+    e.style.fontSize=(14+Math.random()*16)+"px";
+    if(d){e.style.top=Math.random()*100+"%";e.style.animationDelay=(-Math.random()*3)+"s"}
+    else{e.style.animationDuration=(9+Math.random()*9)+"s";e.style.animationDelay=(-Math.random()*14)+"s"}
+    fx.appendChild(e);
+  }
+}
+function setTheme(h){
+  var b=document.body;
+  b.classList.remove("d1","d4","tips","go");
+  if(h!=="d1"&&h!=="d4"&&h!=="tips"&&h!=="go"){setFx(h==="d3");return}
+  cur=null;b.classList.remove("disney");b.classList.add(h);
+  fx.innerHTML="";
+  var f=h==="d1"||h==="go",s=f?["☁️","☁️","☁️","☁️","✈️"]:["🎁","🛍️","🍫","🎀","🍡"],n=f?10:18;
+  if(h==="go")s=["🚆","🚌","🚇","🚃","🚕"];
+  if(h==="tips")s=["🧳","🧣","🧤","🧥","🎒","📱"];
+  for(var i=0;i<n;i++){
+    var e=document.createElement("span"),du=f?14+Math.random()*14:9+Math.random()*9;
+    e.textContent=s[i%s.length];
+    e.className=f?"fly":"lf";
+    e.style.fontSize=(f?22+Math.random()*22:16+Math.random()*14)+"px";
+    if(f)e.style.top=Math.random()*70+"%";else e.style.left=Math.random()*100+"%";
+    e.style.animationDuration=du+"s";
+    e.style.animationDelay=(-Math.random()*du)+"s";
+    fx.appendChild(e);
+  }
+}
+document.querySelectorAll("#nav a").forEach(function(a){
+  a.addEventListener("click",function(ev){
+    ev.preventDefault();
+    var k=a.getAttribute("href").slice(1);
+    try{history.replaceState(null,"","#"+k)}catch(e){}
+    show(k);window.scrollTo(0,0);
+  });
+});
 window.addEventListener("hashchange",show);show();
 document.querySelectorAll("input[data-k]").forEach(function(c){
   try{c.checked=localStorage.getItem("tk-"+c.dataset.k)==="1"}catch(e){}
